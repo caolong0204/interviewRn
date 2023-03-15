@@ -45,10 +45,8 @@ function ActionSheet(
     <Portal>
       <Modalize
         adjustToContentHeight={true}
-        handlePosition={'inside'}
-        withOverlay={false}
-        rootStyle={styles.rootView}
-        // alwaysOpen={30}
+        handlePosition={'outside'}
+        withOverlay={true}
         threshold={45}
         ref={modalizeRef}>
         <View style={[styles.container, style]}>
@@ -82,16 +80,5 @@ const styles = StyleSheet.create({
   },
   contentView: {
     paddingHorizontal: ThemeApp.paddingHorizontalScreen,
-  },
-  rootView: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 0.39,
-    shadowRadius: 10,
-
-    elevation: 13,
   },
 });

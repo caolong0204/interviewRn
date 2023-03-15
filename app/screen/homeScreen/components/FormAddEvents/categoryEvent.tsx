@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {IconAssets} from '../../../assets/icons';
-import {EVENT_TYPE} from '../../../common/constant';
-import TextCustom from '../../../components/textCustom';
+import {IconAssets} from '../../../../assets/icons';
+import {EVENT_COLOR, EVENT_TYPE} from '../../../../common/constant';
+import TextCustom from '../../../../components/textCustom';
 
 interface CategoryEventProps {
   eventType: EVENT_TYPE;
@@ -52,11 +52,20 @@ const styles = StyleSheet.create({
 const getColorEvent = (eventType: EVENT_TYPE) => {
   switch (eventType) {
     case EVENT_TYPE.BRAINSTORM:
-      return {background: 'rgba(115,91,242,0.1)', circleColor: '#735BF2'};
+      return {
+        background: 'rgba(115,91,242,0.1)',
+        circleColor: EVENT_COLOR.BRAINSTORM,
+      };
     case EVENT_TYPE.DESIGN:
-      return {background: 'rgba(0,179,131,0.1)', circleColor: '#00B383'};
+      return {
+        background: 'rgba(0,179,131,0.1)',
+        circleColor: EVENT_COLOR.DESIGN,
+      };
     case EVENT_TYPE.WORKOUT:
-      return {background: 'rgba(0,149,255,0.1)', circleColor: '#0095FF'};
+      return {
+        background: 'rgba(0,149,255,0.1)',
+        circleColor: EVENT_COLOR.WORKOUT,
+      };
   }
 };
 

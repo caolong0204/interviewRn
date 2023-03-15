@@ -18,7 +18,6 @@ export const TextInputCustom = forwardRef(
   (
     {
       editable = true,
-      rxFormat,
       multiline,
       placeholder,
       leftChildren,
@@ -33,14 +32,13 @@ export const TextInputCustom = forwardRef(
       styleErrorContainer,
       styleErrorText,
       preset = 'default',
+      isRequired = false,
       ...rest
     }: TextInputProps,
     ref: ForwardedRef<RNTextInput>,
   ) => {
     const handleTextChange = (text: string) => {
-      const actualText =
-        rxFormat !== undefined ? text.replace(rxFormat, '') : text;
-      onChangeText && onChangeText(actualText);
+      onChangeText && onChangeText(text);
     };
 
     const handleFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
@@ -77,7 +75,7 @@ export const TextInputCustom = forwardRef(
               editable === false ? ThemeApp.grayTxt : placeholderTextColor
             }
             value={value}
-            placeholder={placeholder}
+            placeholder={isRequired ? placeholder + '*' : placeholder}
             style={[
               styles.input,
               !editable ? {color: ThemeApp.grayTxt} : {},

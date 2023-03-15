@@ -6,18 +6,26 @@
  */
 
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {ActivityIndicator, SafeAreaView} from 'react-native';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {Host} from 'react-native-portalize';
+import {Provider} from 'react-redux';
 import HomeScreen from './screen/homeScreen';
-
+import {persitStorage, rootStore} from './store/rootStore';
+import {PersistGate} from 'redux-persist/integration/react';
 function App(): JSX.Element {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
       <SafeAreaView style={{flex: 1}}>
-        <Host>
-          <HomeScreen />
-        </Host>
+        <Provider store={rootStore}>
+          <PersistGate
+            loading={<ActivityIndicator color={'#000'} />}
+            persistor={persitStorage}>
+            <Host>
+              <HomeScreen />
+            </Host>
+          </PersistGate>
+        </Provider>
       </SafeAreaView>
     </GestureHandlerRootView>
   );

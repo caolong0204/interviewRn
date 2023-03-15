@@ -21,12 +21,6 @@ export type FocusedLineProps = {
 
 export type TextInputProps = RNTextInputProps & {
   /**
-   * Format text before call onChangeText function
-   * @default undefined
-   */
-  rxFormat?: RegExp;
-
-  /**
    * Fill placeholder color by Theme
    * @default undefined
    */
@@ -43,4 +37,5 @@ export type TextInputProps = RNTextInputProps & {
   errorMsg?: string;
   styleErrorContainer?: ViewStyle;
   styleErrorText?: TextStyle;
+  isRequired?: boolean;
 };

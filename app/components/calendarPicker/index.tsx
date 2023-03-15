@@ -20,6 +20,7 @@ type CalendarPickerProps = {
   styleErrorText?: TextStyle;
   errorMsg?: string;
   defaultDate?: Date;
+  isRequired?: boolean;
 };
 
 const CalendarPicker = ({
@@ -33,13 +34,15 @@ const CalendarPicker = ({
   styleErrorText,
   defaultDate = new Date(),
   errorMsg = '',
+  isRequired = false,
 }: CalendarPickerProps) => {
-  const [selectDate, setSelectDate] = React.useState<Date>();
+  const [selectDate, setSelectDate] = React.useState<number>();
   const modalizeRef = React.useRef<any>();
+  const newPlaceHolder = isRequired ? `${placeholder}*` : placeholder;
   const value = selectDate
     ? moment(selectDate).format('DD/MM/YYYY')
-    : placeholder;
-  
+    : newPlaceHolder;
+
   //setup min/max Date able to choice
   const min = minDate || moment().subtract(365, 'days').format('YYYY-MM-DD');
   const max = maxDate || moment().add(365, 'days').format('YYYY-MM-DD');
@@ -48,7 +51,7 @@ const CalendarPicker = ({
    * hanle pick a day in calendar
    * @param dayTimeStamp day was picked
    */
-  const handlePickDate = (dayTimeStamp: any) => {
+  const handlePickDate = (dayTimeStamp: number) => {
     setSelectDate(dayTimeStamp);
     onPickDate && onPickDate(dayTimeStamp);
     modalizeRef.current?.close();

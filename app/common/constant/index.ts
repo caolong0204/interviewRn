@@ -14,5 +14,8 @@ export enum EVENT_TYPE {
   DESIGN = 'DESIGN',
   WORKOUT = 'WORKOUT',
 }
+
 export const {width: SCREEN_WIDTH, height: SCREEN_HEIGHT} =
   Dimensions.get('window');
+
+export const FORMAT_MONTH_TIME = 'MM/YYYY';

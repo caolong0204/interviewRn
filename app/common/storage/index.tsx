@@ -86,3 +86,23 @@ export async function clearAllStorage() {
     AppStorage.clearAll();
   } catch {}
 }
+
+interface Storage {
+  getItem(key: string, ...args: Array<any>): any;
+  setItem(key: string, value: any, ...args: Array<any>): any;
+  removeItem(key: string, ...args: Array<any>): any;
+}
+export const reduxPersistStorage: Storage = {
+  setItem: (key, value) => {
+    AppStorage.set(key, value);
+    return Promise.resolve(true);
+  },
+  getItem: key => {
+    const value = AppStorage.getString(key);
+    return Promise.resolve(value);
+  },
+  removeItem: key => {
+    AppStorage.delete(key);
+    return Promise.resolve();
+  },
+};

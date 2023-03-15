@@ -55,7 +55,7 @@ export default ErrorLabel;
 
 const styles = StyleSheet.create({
   textError: {
-    color: ThemeApp.grayTxt,
+    color: 'red',
     paddingLeft: 8,
     marginTop: 2,
     fontSize: 13,
