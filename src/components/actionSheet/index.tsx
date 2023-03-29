@@ -71,7 +71,7 @@ function ActionSheet(
 export default React.forwardRef(ActionSheet);
 const styles = StyleSheet.create({
   container: {
-    minHeight: SCREEN_HEIGHT / 2 + 150,
+    minHeight: SCREEN_HEIGHT / 2 + 160,
   },
   headerContainer: {
     paddingTop: 26,
